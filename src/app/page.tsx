@@ -1,10 +1,22 @@
 "use client";
-import {ComponentPropsWithoutRef, MouseEvent} from "react";
-type ButtonProps = ComponentPropsWithoutRef<"button"> & {}
-function Button({}: ButtonProps) {
-  //const handleClick=(e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {}
-  function handleClick(e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) {}
-  return <button onClick= {handleClick}>Button</button>;
+import {ComponentPropsWithoutRef, MouseEvent, useEffect, useState, useRef, use} from "react";
+type User = {
+  name: string;
+  age: number;
+}
+function Button() {
+  const [count, setCount] = useState(0);
+  const [text, setText] = useState("Click me");
+  const [active, setActive] = useState(false);
+  
+  const [user,setUser] = useState<User|null>(null)
+  const myButton = useRef<HTMLButtonElement>(null);  
+
+  console.log(user?.name)
+  console.log(user?.age)
+
+  myButton.current.
+  return <button ref={myButton}>Button</button>;
 }
 function Page() {
   return (
