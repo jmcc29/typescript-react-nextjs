@@ -1,15 +1,21 @@
-"use client"
-type ButtonProps = {
-  title?: string
+"use client";
+type Color = "red" | "blue" | "green";
+// type ButtonProps = {
+//   title?: string;
+//   color?: Color;
+// };
+interface ButtonProps {
+  title?: string;
+  color?: Color;
 }
-function Button({title="Text Here!"}: ButtonProps) {
-  return <button>{title}</button>
+function Button({ title="test", color}: ButtonProps) {
+  return <button>{title}</button>;
 }
 function Page() {
   return (
     <div>
-      <Button/>
+      <Button />
     </div>
-  )
+  );
 }
-export default Page
+export default Page;
