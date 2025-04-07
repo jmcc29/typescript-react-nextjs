@@ -1,17 +1,10 @@
 "use client";
-import {ComponentPropsWithoutRef} from "react";
-// type Props = ComponentPropsWithoutRef<"button"> 
-// type ButtonProps = Props & {
-//   dark?: boolean;
-//   variant?: "primary" | "secondary";
-// }
-interface Props extends ComponentPropsWithoutRef<"button"> {
-  dark?: boolean;
-  variant?: "primary" | "secondary";
-}
-interface ButtonProps extends Props {}
-function Button({dark, variant, children}: ButtonProps) {
-  return <button>Button</button>;
+import {ComponentPropsWithoutRef, MouseEvent} from "react";
+type ButtonProps = ComponentPropsWithoutRef<"button"> & {}
+function Button({}: ButtonProps) {
+  //const handleClick=(e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {}
+  function handleClick(e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) {}
+  return <button onClick= {handleClick}>Button</button>;
 }
 function Page() {
   return (
