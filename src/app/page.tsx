@@ -1,23 +1,38 @@
 "use client";
-import {ComponentPropsWithoutRef, MouseEvent, useEffect, useState, useRef, use} from "react";
+import {ComponentPropsWithoutRef, MouseEvent, useEffect, useState, useRef, use} 
+from "react";
 type User = {
   name: string;
   age: number;
+  email: string;
+  password: string;
 }
+type UserWithoutPassword = Omit<User, "password">
+type UpdateUser = Partial<User>
+type UserPublicData = Pick<User, "name" | "age">
+type OptionalUserWithoutPassword = Partial<Omit<User, "password">>
+type Status = "idle" | "loading" | "success" | "error" | "pending" | "complete"
+type AllowedStatus = Exclude<Status, "idle" | "error">
 function Button() {
-  const [count, setCount] = useState(0);
-  const [text, setText] = useState("Click me");
-  const [active, setActive] = useState(false);
-  
-  const [user,setUser] = useState<User|null>(null)
-  const myButton = useRef<HTMLButtonElement>(null);  
+  const [user, setUser] = useState<User|null>(null)
+  const myButton = useRef<HTMLButtonElement>(null);
 
-  console.log(user?.name)
-  console.log(user?.age)
+  function sendData() {
+    const user: UserWithoutPassword = {
+      name: "Jose",
+      age: 25,
+      email: "0F0d8@example.com"
+    }
+    return user
+  }
+  function updateUser(user: UpdateUser) {
+    setUser
+  }
 
-  myButton.current.
-  return <button ref={myButton}>Button</button>;
+
+  return <button ref={myButton}>Button</button>
 }
+
 function Page() {
   return (
     <div>
