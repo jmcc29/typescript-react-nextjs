@@ -1,44 +1,31 @@
 "use client";
-import {ComponentPropsWithoutRef, MouseEvent, useEffect, useState, useRef, use} 
-from "react";
+let someValue: unknown = "Hello string"
+
+let stringaLength = (someValue as string).length
+
+let user: unknown = {
+  name: "John",
+  age: 30,
+}
 type User = {
   name: string;
   age: number;
-  email: string;
-  password: string;
-}
-type UserWithoutPassword = Omit<User, "password">
-type UpdateUser = Partial<User>
-type UserPublicData = Pick<User, "name" | "age">
-type OptionalUserWithoutPassword = Partial<Omit<User, "password">>
-type Status = "idle" | "loading" | "success" | "error" | "pending" | "complete"
-type AllowedStatus = Exclude<Status, "idle" | "error">
-function Button() {
-  const [user, setUser] = useState<User|null>(null)
-  const myButton = useRef<HTMLButtonElement>(null);
+};
+const newUser = user as User
+//const colors = ["red", "green", "blue"] as const;
 
-  function sendData() {
-    const user: UserWithoutPassword = {
-      name: "Jose",
-      age: 25,
-      email: "0F0d8@example.com"
-    }
-    return user
-  }
-  function updateUser(user: UpdateUser) {
-    setUser
-  }
-
-
-  return <button ref={myButton}>Button</button>
-}
-
+let num: number = 123;
+let str = num as unknown as string
+//No se valida si es un string
+// Se puede hacer validaciones de tipos con "Zod"
 function Page() {
+  //console.log(colors[0])
+  
+  // const inputElement = document.getElementById('username') as HTMLInputElement;
+  // console.log(inputElement.value);
   return (
     <div>
-      <Button>
-        asdf
-      </Button>
+      {/*<input type="text" id="username"/>*/}
     </div>
   );
 }
