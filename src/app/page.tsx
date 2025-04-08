@@ -1,28 +1,45 @@
-"use client";
-let someValue: unknown = "Hello string"
-
-let stringaLength = (someValue as string).length
-
-let user: unknown = {
-  name: "John",
-  age: 30,
+// function identity<T>(value: T){
+//   return value;
+// }
+function getFirstElement<T>(array: T[]): T{
+  return array[0];
 }
-type User = {
-  name: string;
-  age: number;
-};
-const newUser = user as User
-//const colors = ["red", "green", "blue"] as const;
+getFirstElement([1, 2, 3]);
+getFirstElement(['a', 'b', 'c']);
+getFirstElement([true, false, true]);
 
-let num: number = 123;
-let str = num as unknown as string
-//No se valida si es un string
-// Se puede hacer validaciones de tipos con "Zod"
+interface Box<T> {
+  content: T
+}
+const box1: Box<string> = {
+  content: 'hello'
+}
+const box2: Box<number> = {
+  content: 123
+}
+const box3: Box<boolean> = {
+  content: true
+}
+
+type ApiResponse<T> = {
+  status: number;
+  data: T;
+}
+const response1: ApiResponse<{name: string, age: number}> = {
+  status: 200,
+  data: {
+    name: 'John Doe',
+    age: 30
+  }
+}
+const response2: ApiResponse<string[]> = {
+  status: 200,
+  data: ['a', 'b', 'c']
+}
 function Page() {
-  //console.log(colors[0])
-  
-  // const inputElement = document.getElementById('username') as HTMLInputElement;
-  // console.log(inputElement.value);
+  // identity<string>('Hello world');
+  // identity<number>(123);
+  // identity<boolean>(true);
   return (
     <div>
       {/*<input type="text" id="username"/>*/}
